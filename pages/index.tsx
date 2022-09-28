@@ -92,7 +92,7 @@ export default function Home() {
 
   return (
     <div style={{ backgroundColor: "#11052C" }} className="flex flex-grow">
-      <Head children={undefined}>
+      <Head >
         <title>Advanced RPS</title>
         <meta
           name="description"
