@@ -3,16 +3,10 @@ import { ethers } from "ethers";
 import { RPS, RPS__factory } from "../../public/utils/";
 import * as Peer from "peerjs";
 import initPeer from "../../utils/initPeer";
-// import Timer from "./Timer";
 import WeaponSelector from "./WeaponSelector";
 import NonInteractableWeapon from "./NonInteractableWeapon";
 import { useInterval } from "../../utils/useInterval";
 
-type Loading = {
-  status: "loading" | "idle";
-  msgToDisplay: string;
-  reset: () => void;
-};
 
 type PeerMsg =
   | { _type: "ContractAddress"; address: string }
@@ -24,19 +18,13 @@ type PeerMsg =
 
 type Winner = "P1" | "P2" | "no one, a draw" | "idle";
 
-type TimerType = {
-  status: "running" | "idle" | "finished";
-  defaultTime: Date;
-  expired: boolean;
-  reset: boolean;
-};
 
 type Mining = {
   status: "idle" | "mining";
   reset: () => void;
 };
 
-type ScreenToDisplay = "WaitingForPlayer1" | "SentWeapon" | "PlayerTimedout";
+type ScreenToDisplay = "WaitingForPlayer1" | "SentWeapon";
 
 type BlockchainInfo = {
   p1Moved: boolean;
@@ -45,10 +33,6 @@ type BlockchainInfo = {
   stake: string;
 };
 
-// To fix: Favicon change
-// To fix: Alert on click
-// To fix: Timeout for local player
-// To fix: rejected transaction
 
 const Player2UI = ({
   peerId,
@@ -72,12 +56,6 @@ const Player2UI = ({
     reset: () => setMining({ ...mining, status: "idle" }),
   });
 
-  const [timer, setTimer] = useState<TimerType>({
-    status: "idle",
-    defaultTime: new Date(),
-    expired: false,
-    reset: false,
-  });
 
   const [blockchainInfo, setBlockchainInfo] = useState<BlockchainInfo>({
     p1Moved: false,
@@ -86,41 +64,6 @@ const Player2UI = ({
     stake: "",
   });
 
-  const getTimeSinceLastAction = async (contractAddress: string) => {
-    try {
-      // @ts-ignore
-      const { ethereum } = window;
-
-      if (ethereum) {
-        const provider = new ethers.providers.Web3Provider(ethereum);
-
-        const RPSContract = RPS__factory.connect(contractAddress, provider);
-
-        const lastActionRaw = await RPSContract.lastAction();
-
-        const timeout = await RPSContract.TIMEOUT();
-
-        const now = Math.round(Date.now() / 1000);
-
-        const secondsPassed = ethers.BigNumber.from(now).sub(lastActionRaw);
-
-        const secondsFinal = timeout.sub(secondsPassed).toNumber();
-
-        const time = new Date();
-
-        time.setSeconds(time.getSeconds() + secondsFinal);
-
-        setTimer({
-          ...timer,
-          reset: true,
-          status: "running",
-          defaultTime: time,
-        });
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
   const sendWeaponChoice = async (
     weapon: number,
@@ -152,7 +95,6 @@ const Player2UI = ({
         .then(async (tx) => {
           await tx.wait();
           mining.reset();
-          getTimeSinceLastAction(contractAddress);
         })
         .catch((err) => {
           if (err.code === 4001) alert("You cancelled the transaction");
@@ -163,30 +105,6 @@ const Player2UI = ({
     }
   };
 
-  const player1Timedout = async () => {
-    setScreenToDisplay("PlayerTimedout");
-    //@ts-ignore
-    const { ethereum } = window;
-
-    const provider = new ethers.providers.Web3Provider(ethereum);
-    const signer = provider.getSigner();
-
-    const contract = RPS__factory.connect(contractAddress, signer);
-
-    setMining({ ...mining, status: "idle" });
-
-    contract
-      .j1Timeout()
-      .then(async (tx) => {
-        await tx.wait();
-        mining.reset();
-      })
-      .catch((err) => {
-        if (err.code === 4001) alert("You cancelled the transaction");
-        console.log("player1Timedout", err);
-        mining.reset();
-      });
-  };
 
   const pollBlockchainInfo = async (contractAddress: string) => {
     try {
@@ -260,7 +178,6 @@ const Player2UI = ({
               setPlayer1Weapon(data.weapon);
               return true;
             case "Winner":
-              setTimer({ ...timer, status: "idle", reset: true });
               setWinner(data.player);
               return true;
             default:
@@ -286,7 +203,6 @@ const Player2UI = ({
           className={"relative flex-1 flex flex-col flex-nowrap items-center"}
           style={{
             paddingTop: "4rem",
-            // color: "#FFFA83",
           }}
         >
           {/* This div displays status info */}
@@ -326,7 +242,7 @@ const Player2UI = ({
                   onClick={() => {
                     sendWeaponChoice(weapon, contractAddress, stake);
                   }}
-                  style={{ backgroundColor: "#1C2D61" }}
+                  style={{ backgroundColor: "#585858" }}
                   className="w-96 h-14 rounded-md text-xl"
                 >
                   Click here to confirm selection!
@@ -372,17 +288,12 @@ const Player2UI = ({
                   className={"px-2 flex flex-row text-xs"}
                   style={{ maxWidth: "fit-content" }}
                 >
-                  {/* {externalIcon} */}
                   <span style={{ width: "370px" }}>
                     MATCH: {contractAddress}
                   </span>
                 </a>
               )}
             </div>
-            {/* <div className={"flex-1 flex flex-col"}>
-              {TimerComponent(timer, setTimer)}
-              {TimerExpired(timer, winner, player1Timedout)}
-            </div> */}
           </div>
         </div>
       );
@@ -392,7 +303,6 @@ const Player2UI = ({
           className={"relative flex-1 flex flex-col flex-nowrap items-center"}
           style={{
             paddingTop: "4rem",
-            // color: "#FFFA83",
           }}
         >
           {/* This div displays status info */}
@@ -490,7 +400,6 @@ const Player2UI = ({
                   className={"px-2 flex flex-row text-xs"}
                   style={{ maxWidth: "fit-content" }}
                 >
-                  {/* {externalIcon} */}
                   <span style={{ width: "370px" }}>
                     OPPONENT: {player1Address}
                   </span>
@@ -507,45 +416,12 @@ const Player2UI = ({
                   className={"px-2 flex flex-row text-xs"}
                   style={{ maxWidth: "fit-content" }}
                 >
-                  {/* {externalIcon} */}
                   <span style={{ width: "370px" }}>
                     MATCH: {contractAddress}
                   </span>
                 </a>
               )}
             </div>
-            {/* <div className={"flex-1 flex flex-col"}>
-              {TimerComponent(timer, setTimer)}
-              {TimerExpired(timer, winner, player1Timedout)}
-            </div> */}
-          </div>
-        </div>
-      );
-    case "PlayerTimedout":
-      return (
-        <div
-          className={"relative flex-1 flex flex-col flex-nowrap items-center"}
-          style={{
-            paddingTop: "4rem",
-            color: "#FFFA83",
-          }}
-        >
-          {/* This div displays status info */}
-          <div
-            className={"flex-1 flex flex-col w-full   max-w-lg"}
-            style={{ flexGrow: 0.5 }}
-          >
-            <span className={"text-4xl "}>Player 1 timedout.</span>
-            <br />
-            {mining.status === "mining" ? (
-              <span className={"text-4xl "}>
-                Sending you both stakes to your wallet.
-              </span>
-            ) : (
-              <span className={"text-4xl "}>
-                Sent! Please check your wallet, and thanks for playing.
-              </span>
-            )}
           </div>
         </div>
       );
@@ -553,61 +429,3 @@ const Player2UI = ({
 };
 
 export default Player2UI;
-
-// const TimerComponent = (
-//   timer: TimerType,
-//   setTimer: React.Dispatch<React.SetStateAction<TimerType>>
-// ) => {
-//   switch (timer.status) {
-//     case "idle":
-//       return <span></span>;
-//     case "running":
-//       return (
-//         <Timer
-//           expiryTimestamp={timer.defaultTime}
-//           timerState={{ timer, setTimer }}
-//         />
-//       );
-//     default:
-//       return <span></span>;
-//   }
-// };
-
-// const TimerExpired = (
-//   timer: TimerType,
-//   winner: Winner,
-//   player2Timedout: () => void
-// ) => {
-//   switch (timer.expired) {
-//     case false:
-//       return <span></span>;
-//     case true:
-//       if (winner === "idle") {
-//         return (
-//           <div className={"text-sm flex flex-col items-center"}>
-//             <span>Player 2 timedout.</span>
-//             <span>
-//               Click{" "}
-//               <button
-//                 className={"px-2 py-1 rounded-md"}
-//                 style={{
-//                   color: "#FFFA83",
-//                   backgroundColor: "#FF005C",
-//                   width: "fit-content",
-//                 }}
-//                 onClick={async () => {
-//                   await player2Timedout();
-//                 }}
-//               >
-//                 here
-//               </button>{" "}
-//               to continue!
-//             </span>
-//             <br />
-//           </div>
-//         );
-//       }
-//     default:
-//       return <span></span>;
-//   }
-// };

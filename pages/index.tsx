@@ -93,7 +93,7 @@ export default function Home() {
   return (
     <div style={{ backgroundColor: "#11052C" }} className="flex flex-grow">
       <Head >
-        <title>Advanced RPS</title>
+        <title>Rock, Paper, Scissor, Lizard, Spock</title>
         <meta
           name="description"
           content="A site where friendships are ruined"
@@ -112,7 +112,7 @@ export default function Home() {
       >
         <div
           id="rightDisplay"
-          style={{ backgroundColor: "#4961E1", fontFamily: "Righteous" }}
+          style={{ backgroundColor: "#1C2D61", fontFamily: "Righteous" }}
           className="flex-1 flex flex-col h-full w-full"
         >
           {loading.status === true ? (
@@ -122,7 +122,6 @@ export default function Home() {
               }
               style={{
                 paddingTop: "4rem",
-                color: "#FFFA83",
               }}
             >
               {/* This div displays status info */}
@@ -143,7 +142,7 @@ export default function Home() {
             <div className="flex-1 flex justify-center items-center">
               <button
                 onClick={() => connectWallet()}
-                style={{ color: "#FFFA83", backgroundColor: "#FF005C" }}
+                style={{ backgroundColor: "#1C2D61" }}
                 className="w-96 h-14 rounded-md text-xl"
               >
                 Click here to connect your wallet!
