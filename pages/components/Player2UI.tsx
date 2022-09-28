@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
-import { RPS, RPS__factory } from "../public/utils";
+import { RPS, RPS__factory } from "../../public/utils/";
 import * as Peer from "peerjs";
 import initPeer from "../utils/initPeer";
 import Timer from "./Timer";

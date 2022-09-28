@@ -2,7 +2,7 @@ import { ContractFactory, ethers } from "ethers";
 import { arrayify, solidityKeccak256 } from "ethers/lib/utils";
 import * as Peer from "peerjs";
 import React, { useEffect, useState } from "react";
-import { RPS, RPS__factory } from "../public/utils";
+import { RPS, RPS__factory } from "../../public/utils";
 import initPeer from "../utils/initPeer";
 import Timer from "./Timer";
 import WeaponSelector from "./WeaponSelector";
