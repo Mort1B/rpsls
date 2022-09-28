@@ -3,12 +3,12 @@ import { arrayify, solidityKeccak256 } from "ethers/lib/utils";
 import * as Peer from "peerjs";
 import React, { useEffect, useState } from "react";
 import { RPS, RPS__factory } from "../../public/utils";
-import initPeer from "../utils/initPeer";
+import initPeer from "../../utils/initPeer";
 import Timer from "./Timer";
 import WeaponSelector from "./WeaponSelector";
 import NonInteractableWeapon from "./NonInteractableWeapon";
 import { nanoid } from "nanoid";
-import { useInterval } from "../utils/useInterval";
+import { useInterval } from "../../utils/useInterval";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASEURL || "http://localhost:3000";
 

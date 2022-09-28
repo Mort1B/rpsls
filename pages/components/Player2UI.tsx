@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
 import { RPS, RPS__factory } from "../../public/utils/";
 import * as Peer from "peerjs";
-import initPeer from "../utils/initPeer";
+import initPeer from "../../utils/initPeer";
 import Timer from "./Timer";
 import WeaponSelector from "./WeaponSelector";
 import NonInteractableWeapon from "./NonInteractableWeapon";
-import { useInterval } from "../utils/useInterval";
+import { useInterval } from "../../utils/useInterval";
 
 type Loading = {
   status: "loading" | "idle";
