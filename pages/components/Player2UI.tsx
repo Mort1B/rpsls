@@ -3,7 +3,7 @@ import { ethers } from "ethers";
 import { RPS, RPS__factory } from "../../public/utils/";
 import * as Peer from "peerjs";
 import initPeer from "../../utils/initPeer";
-import Timer from "./Timer";
+// import Timer from "./Timer";
 import WeaponSelector from "./WeaponSelector";
 import NonInteractableWeapon from "./NonInteractableWeapon";
 import { useInterval } from "../../utils/useInterval";
@@ -379,10 +379,10 @@ const Player2UI = ({
                 </a>
               )}
             </div>
-            <div className={"flex-1 flex flex-col"}>
+            {/* <div className={"flex-1 flex flex-col"}>
               {TimerComponent(timer, setTimer)}
               {TimerExpired(timer, winner, player1Timedout)}
-            </div>
+            </div> */}
           </div>
         </div>
       );
@@ -514,10 +514,10 @@ const Player2UI = ({
                 </a>
               )}
             </div>
-            <div className={"flex-1 flex flex-col"}>
+            {/* <div className={"flex-1 flex flex-col"}>
               {TimerComponent(timer, setTimer)}
               {TimerExpired(timer, winner, player1Timedout)}
-            </div>
+            </div> */}
           </div>
         </div>
       );
@@ -554,60 +554,60 @@ const Player2UI = ({
 
 export default Player2UI;
 
-const TimerComponent = (
-  timer: TimerType,
-  setTimer: React.Dispatch<React.SetStateAction<TimerType>>
-) => {
-  switch (timer.status) {
-    case "idle":
-      return <span></span>;
-    case "running":
-      return (
-        <Timer
-          expiryTimestamp={timer.defaultTime}
-          timerState={{ timer, setTimer }}
-        />
-      );
-    default:
-      return <span></span>;
-  }
-};
+// const TimerComponent = (
+//   timer: TimerType,
+//   setTimer: React.Dispatch<React.SetStateAction<TimerType>>
+// ) => {
+//   switch (timer.status) {
+//     case "idle":
+//       return <span></span>;
+//     case "running":
+//       return (
+//         <Timer
+//           expiryTimestamp={timer.defaultTime}
+//           timerState={{ timer, setTimer }}
+//         />
+//       );
+//     default:
+//       return <span></span>;
+//   }
+// };
 
-const TimerExpired = (
-  timer: TimerType,
-  winner: Winner,
-  player2Timedout: () => void
-) => {
-  switch (timer.expired) {
-    case false:
-      return <span></span>;
-    case true:
-      if (winner === "idle") {
-        return (
-          <div className={"text-sm flex flex-col items-center"}>
-            <span>Player 2 timedout.</span>
-            <span>
-              Click{" "}
-              <button
-                className={"px-2 py-1 rounded-md"}
-                style={{
-                  color: "#FFFA83",
-                  backgroundColor: "#FF005C",
-                  width: "fit-content",
-                }}
-                onClick={async () => {
-                  await player2Timedout();
-                }}
-              >
-                here
-              </button>{" "}
-              to continue!
-            </span>
-            <br />
-          </div>
-        );
-      }
-    default:
-      return <span></span>;
-  }
-};
+// const TimerExpired = (
+//   timer: TimerType,
+//   winner: Winner,
+//   player2Timedout: () => void
+// ) => {
+//   switch (timer.expired) {
+//     case false:
+//       return <span></span>;
+//     case true:
+//       if (winner === "idle") {
+//         return (
+//           <div className={"text-sm flex flex-col items-center"}>
+//             <span>Player 2 timedout.</span>
+//             <span>
+//               Click{" "}
+//               <button
+//                 className={"px-2 py-1 rounded-md"}
+//                 style={{
+//                   color: "#FFFA83",
+//                   backgroundColor: "#FF005C",
+//                   width: "fit-content",
+//                 }}
+//                 onClick={async () => {
+//                   await player2Timedout();
+//                 }}
+//               >
+//                 here
+//               </button>{" "}
+//               to continue!
+//             </span>
+//             <br />
+//           </div>
+//         );
+//       }
+//     default:
+//       return <span></span>;
+//   }
+// };

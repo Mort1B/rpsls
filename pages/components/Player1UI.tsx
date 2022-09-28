@@ -4,7 +4,7 @@ import * as Peer from "peerjs";
 import React, { useEffect, useState } from "react";
 import { RPS, RPS__factory } from "../../public/utils";
 import initPeer from "../../utils/initPeer";
-import Timer from "./Timer";
+// import Timer from "./Timer";
 import WeaponSelector from "./WeaponSelector";
 import NonInteractableWeapon from "./NonInteractableWeapon";
 import { nanoid } from "nanoid";
@@ -576,10 +576,10 @@ const Player1UI = (props: { accountAddress: string }) => {
                 </a>
               )}
             </div>
-            <div className={"flex-1 flex flex-col"}>
+            {/* <div className={"flex-1 flex flex-col"}>
               {TimerComponent(timer, setTimer)}
               {TimerExpired(timer, winner, player2Timedout)}
-            </div>
+            </div> */}
           </div>
         </div>
       );
@@ -708,10 +708,10 @@ const Player1UI = (props: { accountAddress: string }) => {
                 </a>
               )}
             </div>
-            <div className={"flex-1 flex flex-col"}>
+            {/* <div className={"flex-1 flex flex-col"}>
               {TimerComponent(timer, setTimer)}
               {TimerExpired(timer, winner, player2Timedout)}
-            </div>
+            </div> */}
           </div>
         </div>
       );
@@ -764,63 +764,63 @@ const getRand = () => {
   return arrayify(array);
 };
 
-const TimerComponent = (
-  timer: TimerType,
-  setTimer: React.Dispatch<React.SetStateAction<TimerType>>
-) => {
-  switch (timer.status) {
-    case "idle":
-      return <span></span>;
-    case "running":
-      return (
-        <Timer
-          expiryTimestamp={timer.defaultTime}
-          timerState={{ timer, setTimer }}
-        />
-      );
-    default:
-      return <span></span>;
-  }
-};
+// const TimerComponent = (
+//   timer: TimerType,
+//   setTimer: React.Dispatch<React.SetStateAction<TimerType>>
+// ) => {
+//   switch (timer.status) {
+//     case "idle":
+//       return <span></span>;
+//     case "running":
+//       return (
+//         <Timer
+//           expiryTimestamp={timer.defaultTime}
+//           timerState={{ timer, setTimer }}
+//         />
+//       );
+//     default:
+//       return <span></span>;
+//   }
+// };
 
-const TimerExpired = (
-  timer: TimerType,
-  winner: Winner,
-  player2Timedout: () => void
-) => {
-  switch (timer.expired) {
-    case false:
-      return <span></span>;
-    case true:
-      if (winner === "idle") {
-        return (
-          <div className={"text-sm flex flex-col items-center"}>
-            <span>Player 2 timedout.</span>
-            <span>
-              Click{" "}
-              <button
-                className={"px-2 py-1 rounded-md"}
-                style={{
-                //   color: "#FFFA83",
-                  backgroundColor: "#585858",
-                  width: "fit-content",
-                }}
-                onClick={async () => {
-                  await player2Timedout();
-                }}
-              >
-                here
-              </button>{" "}
-              to get both stakes back!
-            </span>
-            <br />
-          </div>
-        );
-      }
-    default:
-      return <span></span>;
-  }
-};
+// const TimerExpired = (
+//   timer: TimerType,
+//   winner: Winner,
+//   player2Timedout: () => void
+// ) => {
+//   switch (timer.expired) {
+//     case false:
+//       return <span></span>;
+//     case true:
+//       if (winner === "idle") {
+//         return (
+//           <div className={"text-sm flex flex-col items-center"}>
+//             <span>Player 2 timedout.</span>
+//             <span>
+//               Click{" "}
+//               <button
+//                 className={"px-2 py-1 rounded-md"}
+//                 style={{
+//                 //   color: "#FFFA83",
+//                   backgroundColor: "#585858",
+//                   width: "fit-content",
+//                 }}
+//                 onClick={async () => {
+//                   await player2Timedout();
+//                 }}
+//               >
+//                 here
+//               </button>{" "}
+//               to get both stakes back!
+//             </span>
+//             <br />
+//           </div>
+//         );
+//       }
+//     default:
+//       return <span></span>;
+//   }
+// };
 
 const checkIfReadyForMatchCreation = (
   weapon: Selection,
