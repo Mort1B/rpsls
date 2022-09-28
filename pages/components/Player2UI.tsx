@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
 import { RPS, RPS__factory } from "../public/utils";
-import {Peer} from "peerjs";
+import * as Peer from "peerjs";
 import initPeer from "../utils/initPeer";
 import Timer from "./Timer";
 import WeaponSelector from "./WeaponSelector";
@@ -247,7 +247,7 @@ const Player2UI = ({
         conn.send(msg);
 
         // Receive messages
-        conn.on("data", (data: PeerMsg) => {
+        conn.on("data", (data: PeerMsg ) => {
           switch (data._type) {
             case "Player1Address":
               return setPlayer1Address(data.address);

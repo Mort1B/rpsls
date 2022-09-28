@@ -1,6 +1,6 @@
 import { ContractFactory, ethers } from "ethers";
 import { arrayify, solidityKeccak256 } from "ethers/lib/utils";
-import Peer from "peerjs";
+import * as Peer from "peerjs";
 import React, { useEffect, useState } from "react";
 import { RPS, RPS__factory } from "../public/utils";
 import initPeer from "../utils/initPeer";
