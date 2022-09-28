@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 type SingleWeaponProps = {
   num: number;
-  image: string;
+  choice: string;
   currentWeapon: number;
   setSelectedWeapon: React.Dispatch<React.SetStateAction<number>>;
 };
@@ -18,8 +18,6 @@ const SingleWeapon = (props: SingleWeaponProps) => {
     // eslint-disable-next-line
   }, [props.currentWeapon]);
 
-  const boxSize = 120;
-
   return (
     <div
       onClick={() => {
@@ -30,14 +28,14 @@ const SingleWeapon = (props: SingleWeaponProps) => {
         display: "flex",
         alignContent: "center",
         justifyContent: "center",
-        width: `${boxSize.toString()}px`,
-        height: `${boxSize.toString()}px`,
+        width: "120px",
+        height: "120px",
         backgroundColor: selected === true ? "#585858" : "",
         marginLeft: "10px",
         marginRight: "10px",
       }}
     >
-        <div style={{margin: "auto"}}>{props.image}</div>
+        <div style={{margin: "auto"}}>{props.choice}</div>
     </div>
   );
 };

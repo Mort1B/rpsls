@@ -5,7 +5,7 @@ type SingleWeaponProps = {
 };
 
 const NonInteractableWeapon = (props: SingleWeaponProps) => {
-  const IMAGES = [
+  const CHOICE = [
     "",
     "rock",
     "paper",
@@ -14,8 +14,6 @@ const NonInteractableWeapon = (props: SingleWeaponProps) => {
     "lizard",
   ];
 
-  const boxSize = 120;
-
   return (
     <div
       className="square"
@@ -23,14 +21,14 @@ const NonInteractableWeapon = (props: SingleWeaponProps) => {
         display: "flex",
         alignContent: "center",
         justifyContent: "center",
-        width: `${boxSize.toString()}px`,
-        height: `${boxSize.toString()}px`,
+        width: "120px",
+        height: "120px",
         backgroundColor: "#585858",
         marginLeft: "10px",
         marginRight: "10px",
       }}
     >
-      {<div style={{margin: "auto"}}>{IMAGES[props.weapon]}</div>}
+      {<div style={{margin: "auto"}}>{CHOICE[props.weapon]}</div>}
     </div>
   );
 };

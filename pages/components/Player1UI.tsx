@@ -9,7 +9,7 @@ import NonInteractableWeapon from "./NonInteractableWeapon";
 import { nanoid } from "nanoid";
 import { useInterval } from "../../utils/useInterval";
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASEURL || "http://localhost:3000";
+const BASE_URL = process.env.NEXT_PUBLIC_BASEURL || "http://localhost:3000"; // hardcoded
 
 type PeerMsg =
   | { _type: "ContractAddress"; address: string }
@@ -327,7 +327,7 @@ const Player1UI = (props: { accountAddress: string }) => {
             <br />
             {peerId === "" ? (
               <span className={"text-4xl "}>
-                Pinging the P2P router. Hold on.
+                Pinging the P2P router.
               </span>
             ) : (
               <div className="flex-1 flex justify-center items-center">
@@ -370,7 +370,7 @@ const Player1UI = (props: { accountAddress: string }) => {
               <>
                 <span className={"text-4xl"}>Please check your wallet.</span>
                 <span className={"text-4xl"}>
-                  Confirm deploying contract to the blockchain!
+                  Deploy the contract to the blockchain!
                 </span>
                 <br />
               </>
@@ -424,7 +424,7 @@ const Player1UI = (props: { accountAddress: string }) => {
                       style={{  backgroundColor: "#585858" }}
                       className="w-96 h-14 rounded-md text-xl"
                     >
-                      Click here to start the match!
+                      Click here to place your bets!
                     </button>
                   ) : (
                     ""
@@ -449,7 +449,7 @@ const Player1UI = (props: { accountAddress: string }) => {
                 </div>
                 <br />
                 <div className={"flex flex-col justify-center items-center "}>
-                  <div>Waiting for Player 2&apos;s response</div>
+                  <div>Waiting for Player 2s response</div>
                 </div>
               </div>
             )}
@@ -471,9 +471,9 @@ const Player1UI = (props: { accountAddress: string }) => {
                   target="_blank"
                   href={`https://ropsten.etherscan.io/address/${player2Address}`}
                   className={" px-2 flex flex-row text-xs"}
-                  style={{ maxWidth: "fit-content" }}
+                  style={{ maxWidth: "fit-content", textAlign: "center" }}
                 >
-                  <span style={{ width: "370px" }}>
+                  <span style={{ width: "370px", textAlign: "center" }}>
                     OPPONENT: {player2Address}
                   </span>
                 </a>
@@ -487,9 +487,9 @@ const Player1UI = (props: { accountAddress: string }) => {
                   target="_blank"
                   href={`https://ropsten.etherscan.io/address/${contractAddress}`}
                   className={" px-2 flex flex-row text-xs"}
-                  style={{ maxWidth: "fit-content" }}
+                  style={{ maxWidth: "fit-content", textAlign: "center" }}
                 >
-                  <span style={{ width: "370px" }}>
+                  <span style={{ width: "370px", textAlign: "center" }}>
                     MATCH: {contractAddress}
                   </span>
                 </a>
@@ -595,9 +595,9 @@ const Player1UI = (props: { accountAddress: string }) => {
                   target="_blank"
                   href={`https://ropsten.etherscan.io/address/${player2Address}`}
                   className={"px-2 flex flex-row text-xs"}
-                  style={{ maxWidth: "fit-content" }}
+                  style={{ maxWidth: "fit-content", textAlign: "center" }}
                 >
-                  <span style={{ width: "370px",  }}>
+                  <span style={{ width: "370px", textAlign: "center" }}>
                     OPPONENT: {player2Address}
                   </span>
                 </a>
@@ -611,9 +611,9 @@ const Player1UI = (props: { accountAddress: string }) => {
                   target="_blank"
                   href={`https://ropsten.etherscan.io/address/${contractAddress}`}
                   className={"px-2 flex flex-row text-xs"}
-                  style={{ maxWidth: "fit-content" }}
+                  style={{ maxWidth: "fit-content", textAlign: "center" }}
                 >
-                  <span style={{ width: "370px" }}>
+                  <span style={{ width: "370px", textAlign: "center" }}>
                     MATCH: {contractAddress}
                   </span>
                 </a>

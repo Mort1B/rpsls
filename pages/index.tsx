@@ -96,7 +96,7 @@ export default function Home() {
         <title>Rock, Paper, Scissor, Lizard, Spock</title>
         <meta
           name="description"
-          content="A site where friendships are ruined"
+          content="Take Your Bets"
         />
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />

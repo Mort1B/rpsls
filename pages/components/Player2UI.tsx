@@ -215,7 +215,7 @@ const Player2UI = ({
                 <span className={"text-4xl"}>Linked with Player 1!</span>
                 <br />
                 <span className={"text-4xl"}>
-                  Waiting for the match to start.
+                  Waiting for player 1 to place a bet.
                 </span>
               </>
             ) : (
@@ -223,8 +223,8 @@ const Player2UI = ({
                 <span className={"text-4xl"}>The match has started!</span>
                 <br />
                 <span className={"text-4xl"}>
-                  Please choose a weapon, if you decide to play you&apos;ll be
-                  staking {stake} ETH.
+                  Please choose a weapon, if you decide to play you'll be
+                  betting {stake} ETH.
                 </span>
               </>
             )}
@@ -321,7 +321,7 @@ const Player2UI = ({
             ) : winner === "idle" ? (
               <>
                 <span className={"text-4xl"}>
-                  Waiting for Player 1&apos;s confirmation.
+                  Waiting for Player 1 confirmation.
                 </span>
               </>
             ) : contractAddress !== "" && blockchainInfo.stake === "0.0" ? (
@@ -363,19 +363,19 @@ const Player2UI = ({
               player1Weapon === 0 ? (
                 <div className={"flex flex-col justify-center items-center"}>
                   <div className={"flex flex-col justify-center items-center"}>
-                    <div>Player 1&apos;s choice</div>
+                    <div>Player 1s choice</div>
                   </div>
                 </div>
               ) : (
                 <div className={"flex flex-col justify-center items-center"}>
                   <NonInteractableWeapon weapon={player1Weapon} />
                   <br />
-                  <div>Player 1&apos;s choice</div>
+                  <div>Player 1s choice</div>
                 </div>
               )
             ) : player1Weapon === 0 ? (
               <div className={"flex flex-col justify-center items-center"}>
-                <div>Waiting for Player 1&apos;s response</div>
+                <div>Waiting for Player 1s response</div>
               </div>
             ) : (
               ""
@@ -398,7 +398,7 @@ const Player2UI = ({
                   target="_blank"
                   href={`https://ropsten.etherscan.io/address/${player1Address}`}
                   className={"px-2 flex flex-row text-xs"}
-                  style={{ maxWidth: "fit-content" }}
+                  style={{ maxWidth: "fit-content", textAlign: "center" }}
                 >
                   <span style={{ width: "370px" }}>
                     OPPONENT: {player1Address}
@@ -414,9 +414,9 @@ const Player2UI = ({
                   target="_blank"
                   href={`https://ropsten.etherscan.io/address/${contractAddress}`}
                   className={"px-2 flex flex-row text-xs"}
-                  style={{ maxWidth: "fit-content" }}
+                  style={{ maxWidth: "fit-content", textAlign: "center" }}
                 >
-                  <span style={{ width: "370px" }}>
+                  <span style={{ width: "370px", textAlign: "center" }}>
                     MATCH: {contractAddress}
                   </span>
                 </a>

@@ -6,7 +6,7 @@ type CircleProps = {
   setWeapon: React.Dispatch<React.SetStateAction<number>>;
 };
 const WeaponSelector = (props: CircleProps) => {
-  const IMAGES = [
+  const CHOICE = [
     "",
     "rock",
     "paper",
@@ -20,13 +20,13 @@ const WeaponSelector = (props: CircleProps) => {
   );
 
   useEffect(() => {
-    console.log("Changing weapon to", selectedWeapon, IMAGES[selectedWeapon]);
+    console.log("Changing weapon to", selectedWeapon, CHOICE[selectedWeapon]);
     props.setWeapon(selectedWeapon);
   }, [selectedWeapon]);
 
   return (
     <div className={"flex-1 flex flex-row justify-around"}>
-      {IMAGES.map((image, index) => {
+      {CHOICE.map((choice, index) => {
         if (index === 0) return;
         return (
           <SingleWeapon
@@ -34,7 +34,7 @@ const WeaponSelector = (props: CircleProps) => {
             currentWeapon={selectedWeapon}
             setSelectedWeapon={setSelectedWeapon}
             num={index}
-            image={image}
+            choice={choice}
           />
         );
       })}
