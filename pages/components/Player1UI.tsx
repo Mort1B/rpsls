@@ -333,7 +333,7 @@ const Player1UI = (props: { accountAddress: string }) => {
               <div className="flex-1 flex justify-center items-center">
                 <button
                   onClick={() =>
-                    copyToClipBoard(`${BASE_URL}/?peerId=${peerId}`)
+                    copyToClipBoard(`https://test-8fle.vercel.app/?peerId=${peerId}`)
                   }
                   style={{
                     backgroundColor: "#585858",

@@ -8,11 +8,11 @@ type CircleProps = {
 const WeaponSelector = (props: CircleProps) => {
   const IMAGES = [
     "",
-    "ROCK",
-    "PAPER",
-    "SCISSOR",
-    "SPOCK",
-    "LIZARD",
+    "rock",
+    "paper",
+    "scissor",
+    "spock",
+    "lizard",
   ];
 
   const [selectedWeapon, setSelectedWeapon] = useState<number>(

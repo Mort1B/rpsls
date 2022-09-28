@@ -19,9 +19,6 @@ const SingleWeapon = (props: SingleWeaponProps) => {
   }, [props.currentWeapon]);
 
   const boxSize = 120;
-  const imageSize = 100;
-  const lizardSize = Math.floor(imageSize * (100 / 120)).toString();
-  const rockSize = Math.floor(imageSize * (80 / 120)).toString();
 
   return (
     <div
@@ -38,36 +35,9 @@ const SingleWeapon = (props: SingleWeaponProps) => {
         backgroundColor: selected === true ? "#585858" : "",
         marginLeft: "10px",
         marginRight: "10px",
-        opacity: props.currentWeapon === 0 ? 1 : selected === true ? 1 : 0.5,
       }}
     >
         <div style={{margin: "auto"}}>{props.image}</div>
-      {/* <img
-        src={props.image}
-        style={{
-          transform: props.image === "lizard" ? "rotate(-90deg)" : "",
-          position: "relative",
-          left:
-            props.image === "spock"
-              ? "5px"
-              : props.image === "paper"
-              ? "-5px"
-              : "",
-          width:
-            props.image === "rock"
-              ? `${rockSize}px`
-              : props.image === "lizard"
-              ? `${lizardSize}px`
-              : `${imageSize}px`,
-          height:
-            props.image === "rock"
-              ? `${rockSize}px`
-              : props.image === "lizard"
-              ? `${lizardSize}px`
-              : `${imageSize}px`,
-          alignSelf: "center",
-        }}
-      /> */}
     </div>
   );
 };

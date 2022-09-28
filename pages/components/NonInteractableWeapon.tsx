@@ -7,7 +7,7 @@ type SingleWeaponProps = {
 const NonInteractableWeapon = (props: SingleWeaponProps) => {
   const IMAGES = [
     "",
-    "ROCK",
+    "rock",
     "paper",
     "scissors",
     "spock",

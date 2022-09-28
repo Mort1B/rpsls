@@ -142,7 +142,7 @@ export default function Home() {
             <div className="flex-1 flex justify-center items-center">
               <button
                 onClick={() => connectWallet()}
-                style={{ backgroundColor: "#1C2D61" }}
+                style={{ backgroundColor: "#585858" }}
                 className="w-96 h-14 rounded-md text-xl"
               >
                 Click here to connect your wallet!
