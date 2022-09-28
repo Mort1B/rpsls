@@ -235,6 +235,7 @@ const Player2UI = ({
 
       setConnToPlayer(conn);
 
+
       conn.on("error", function (err) {
         console.log("CONNError: ", err);
       });
@@ -247,19 +248,23 @@ const Player2UI = ({
         conn.send(msg);
 
         // Receive messages
-        conn.on("data", (data: PeerMsg ) => {
+        conn.on('data', (data: any ):data is PeerMsg => {
           switch (data._type) {
             case "Player1Address":
-              return setPlayer1Address(data.address);
+              setPlayer1Address(data.address);
+              return true;
             case "ContractAddress":
-              return setContractAddress(data.address);
+              setContractAddress(data.address);
+              return true;
             case "Player1Weapon":
-              return setPlayer1Weapon(data.weapon);
+              setPlayer1Weapon(data.weapon);
+              return true;
             case "Winner":
               setTimer({ ...timer, status: "idle", reset: true });
-              return setWinner(data.player);
+              setWinner(data.player);
+              return true;
             default:
-              return;
+              return true;
           }
         });
       });

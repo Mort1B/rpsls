@@ -326,17 +326,20 @@ const Player1UI = (props: { accountAddress: string }) => {
         setConnState(conn);
 
         // Set event listeners for Peer communication
-        conn.on("data", (data: PeerMsg) => {
+        conn.on("data", (data: any): data is PeerMsg => {
           switch (data._type) {
             case "Connected":
-              return setScreenToDisplay("Player2Connected");
+              setScreenToDisplay("Player2Connected");
+              return true;
 
             case "Player2Address":
               setTimer({ ...timer, expired: false, status: "idle" });
-              return setPlayer2Address(data.address);
+              setPlayer2Address(data.address);
+              return true;
 
             default:
-              return console.log("Default");
+              console.log("Default");
+              return true;
           }
         });
       });
