@@ -322,6 +322,7 @@ const Player1UI = (props: { accountAddress: string }) => {
             style={{textAlign: "center", flexGrow: 0.5 }}
           >
             <span className={"text-4xl "}>Play RPSLS</span>
+            <a href="https://bigbangtheory.fandom.com/wiki/Rock,_Paper,_Scissors,_Lizard,_Spock" target="_blank">Rock, Paper, Scissor, Lizard, Spock Rules</a>
             <br />
             {peerId === "" ? (
               <span className={"text-4xl "}>
