@@ -223,11 +223,9 @@ const Player1UI = (props: { accountAddress: string }) => {
     else return "P2";
   };
 
-  // Peer js setup, dinamically as to please NextJS
+  // Peer js setup, dynamically as to please NextJS
   useEffect(() => {
-    console.log("Trying to reach PeerJS servers");
     const asyncFn = async () => {
-      console.log("Trying to create Peer");
       const id = `advancedRPS-${nanoid()}`;
       const peer = await initPeer(id);
 
