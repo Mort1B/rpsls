@@ -267,7 +267,7 @@ const Player2UI = ({
                 <a
                   rel="noreferrer"
                   target="_blank"
-                  href={`https://ropsten.etherscan.io/address/${player1Address}`}
+                  href={`https://goerli.etherscan.io/address/${player1Address}`}
                   className={"px-2 flex flex-row text-xs"}
                   style={{ maxWidth: "fit-content" }}
                 >
@@ -284,7 +284,7 @@ const Player2UI = ({
                 <a
                   rel="noreferrer"
                   target="_blank"
-                  href={`https://ropsten.etherscan.io/address/${contractAddress}`}
+                  href={`https://goerli.etherscan.io/address/${contractAddress}`}
                   className={"px-2 flex flex-row text-xs"}
                   style={{ maxWidth: "fit-content" }}
                 >
@@ -396,7 +396,7 @@ const Player2UI = ({
                 <a
                   rel="noreferrer"
                   target="_blank"
-                  href={`https://ropsten.etherscan.io/address/${player1Address}`}
+                  href={`https://goerli.etherscan.io/address/${player1Address}`}
                   className={"px-2 flex flex-row text-xs"}
                   style={{ maxWidth: "fit-content", textAlign: "center" }}
                 >
@@ -412,7 +412,7 @@ const Player2UI = ({
                 <a
                   rel="noreferrer"
                   target="_blank"
-                  href={`https://ropsten.etherscan.io/address/${contractAddress}`}
+                  href={`https://goerli.etherscan.io/address/${contractAddress}`}
                   className={"px-2 flex flex-row text-xs"}
                   style={{ maxWidth: "fit-content", textAlign: "center" }}
                 >
