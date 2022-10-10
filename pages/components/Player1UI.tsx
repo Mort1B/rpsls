@@ -468,7 +468,7 @@ const Player1UI = (props: { accountAddress: string }) => {
                 <a
                   rel="noreferrer"
                   target="_blank"
-                  href={`https://ropsten.etherscan.io/address/${player2Address}`}
+                  href={`https://goerli.etherscan.io/address/${player2Address}`}
                   className={" px-2 flex flex-row text-xs"}
                   style={{ maxWidth: "fit-content", textAlign: "center" }}
                 >
@@ -484,7 +484,7 @@ const Player1UI = (props: { accountAddress: string }) => {
                 <a
                   rel="noreferrer"
                   target="_blank"
-                  href={`https://ropsten.etherscan.io/address/${contractAddress}`}
+                  href={`https://goerli.etherscan.io/address/${contractAddress}`}
                   className={" px-2 flex flex-row text-xs"}
                   style={{ maxWidth: "fit-content", textAlign: "center" }}
                 >
@@ -592,7 +592,7 @@ const Player1UI = (props: { accountAddress: string }) => {
                 <a
                   rel="noreferrer"
                   target="_blank"
-                  href={`https://ropsten.etherscan.io/address/${player2Address}`}
+                  href={`https://goerli.etherscan.io/address/${player2Address}`}
                   className={"px-2 flex flex-row text-xs"}
                   style={{ maxWidth: "fit-content", textAlign: "center" }}
                 >
@@ -608,7 +608,7 @@ const Player1UI = (props: { accountAddress: string }) => {
                 <a
                   rel="noreferrer"
                   target="_blank"
-                  href={`https://ropsten.etherscan.io/address/${contractAddress}`}
+                  href={`https://goerli.etherscan.io/address/${contractAddress}`}
                   className={"px-2 flex flex-row text-xs"}
                   style={{ maxWidth: "fit-content", textAlign: "center" }}
                 >
